@@ -1,0 +1,17 @@
+services:
+  ubuntu-vnc:
+    build: .
+    container_name: ubuntu-vnc
+    ports:
+      - "5900:5900"   # Port VNC - connectez-vous avec un client VNC sur localhost:5900
+    environment:
+      - DISPLAY=:99
+      - WINEDEBUG=-all
+    volumes:
+      - ./mt5linux.sh:/home/vncuser/mt5linux.sh
+      - vnc-home:/home/vncuser  # Persistance du bureau et des fichiers
+    shm_size: '2gb'   # Mémoire partagée pour le bureau
+    restart: unless-stopped
+
+volumes:
+  vnc-home:
