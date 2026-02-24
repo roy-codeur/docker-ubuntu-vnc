@@ -9,6 +9,8 @@ services:
       - WINEDEBUG=-all
     volumes:
       - ./mt5linux.sh:/home/vncuser/mt5linux.sh
+      - ./Default.tpl:/home/vncuser/Default.tpl
+      - ./price_action.ex5:/home/vncuser/price_action.ex5
       - vnc-home:/home/vncuser  # Persistance du bureau et des fichiers
     shm_size: '2gb'   # Mémoire partagée pour le bureau
     restart: unless-stopped
